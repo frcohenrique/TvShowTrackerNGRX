@@ -1,0 +1,72 @@
+<div class="authentication-wrapper">
+  <mat-card class="authentication">
+    <mat-card-header>
+      <mat-card-title>Bem-vindo.</mat-card-title>
+      <p>Informe as suas credenciais de acesso</p>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <table class="table-wrapper" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="table-wrapper">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    placeholder="Ex. user@user.com"
+                    formControlName="email"
+                  />
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+          <table class="table-wrapper" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="table-wrapper">
+                  <mat-label>Senha</mat-label>
+                  <div class="password">
+                    <input
+                      matInput
+                      [type]="hide ? 'password' : 'text'"
+                      placeholder="Admin12345"
+                      formControlName="password"
+                    />
+                    <mat-icon
+                      class="grow"
+                      (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide"
+                      >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+                    >
+                  </div>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="error" *ngIf="errorMsg">
+          <p>{{ errorMsg }}</p>
+        </div>
+        <div class="button-wrapper">
+          <button
+            [disabled]="!loginForm.valid"
+            mat-stroked-button
+            class="grow"
+            (click)="submitForm()"
+          >
+            Entrar
+          </button>
+          <button
+            mat-stroked-button
+            class="grow"
+            [routerLink]="['/authentication/register']"
+          >
+            Crie uma conta
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
