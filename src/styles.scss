@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+body {
+  background: linear-gradient(
+    121deg,
+    rgba(91, 15, 110, 0.85) 33%,
+    rgba(25, 15, 110, 0.9) 79%
+  );
+}
+
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.2);
+}
