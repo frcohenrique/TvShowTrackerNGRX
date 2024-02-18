@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
 
+This is a personal project I created to study NGRX, with no complexity or focus on design/responsiveness. The main goal is to understand how NGRX works, state management, and its practical implementation. The deployment was done on Firebase, and you can access the application through the following link: [TvShowTrackerNGRX](https://tv-show-tracker-ngrx.web.app/).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
