@@ -1,0 +1,43 @@
+<div class="return-wrapper">
+  <button mat-stroked-button class="btn-return" [routerLink]="['']">
+    <mat-icon>keyboard_return</mat-icon>
+  </button>
+</div>
+
+<ng-container *ngIf="showContent; else loading">
+  <mat-paginator
+    [length]="tvShows.total_results"
+    [pageSize]="20"
+    (page)="pageEvent = $event"
+    aria-label="Select page"
+    (page)="changePage()"
+    [pageIndex]="pageEvent?.pageIndex >= 1 ? pageEvent?.pageIndex : 1"
+  >
+  </mat-paginator>
+  <div class="card-wrapper">
+    <mat-card *ngFor="let show of tvShows.results; let i = index">
+      <mat-card-header class="header-wrapper">
+        <mat-card-title class="title-text"
+          >{{ show.name }}
+          <mat-icon (click)="addTvShow(show)" class="icon-add-circle grow"
+            >add_circle_outline</mat-icon
+          ></mat-card-title
+        >
+        <mat-card-subtitle>{{ show.original_name }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img class="poster" [src]="show.poster" [alt]="show.name" />
+
+        <div>
+          <p>{{ show.overview }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <div class="card-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
