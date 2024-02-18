@@ -32,6 +32,15 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./tv-shows-list/tv-shows-list.module').then(
+        (m) => m.TvShowsListModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
     path: '404',
     loadChildren: () =>
       import('./shared/miscellaneous/miscellaneous.module').then(

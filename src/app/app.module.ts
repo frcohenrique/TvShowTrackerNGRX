@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthenticationService } from './services/authentication.service';
+import { TvShowsListModule } from './tv-shows-list/tv-shows-list.module';
+import { showListReducer } from './store/show-list.reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,6 @@ import { AuthenticationService } from './services/authentication.service';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    HomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
@@ -40,7 +41,7 @@ import { AuthenticationService } from './services/authentication.service';
     MatIconModule,
     RouterModule,
     AuthenticationModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ showList: showListReducer }),
   ],
   providers: [TmdbApiService, AuthenticationService],
   bootstrap: [AppComponent],
