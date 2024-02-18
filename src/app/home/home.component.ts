@@ -13,10 +13,6 @@ export class HomeComponent implements OnInit {
   constructor(private readonly store: Store) {}
 
   getTvShows() {
-    // this.tmdbApiService.getAllTvShows().subscribe((res) => {
-    //   console.log(res.results);
-    //   this.variavel = res.results;
-    // });
     this.store.select(selectTvShows).subscribe((shows) => {
       this.tvShows = shows;
     });
@@ -24,10 +20,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTvShows();
-    console.log(this.tvShows)
-    // this.tmdbApiService.getAllTvShows().subscribe((res) => {
-    //   console.log(res.results);
-    //   this.variavel = res.results;
-    // });
   }
 }

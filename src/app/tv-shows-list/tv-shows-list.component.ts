@@ -28,7 +28,6 @@ export class TvShowsListComponent implements OnInit {
   }
 
   changePage() {
-    console.log(this.pageEvent.pageIndex);
     if (this.pageEvent.pageIndex <= 0) {
       this.pageEvent.pageIndex = 1;
     }
@@ -46,15 +45,12 @@ export class TvShowsListComponent implements OnInit {
           res.results.map((result: any) => {
             result.poster = `${this.posterApiUrl}/${result.poster_path}`;
           });
-          console.log(res);
           this.showContent = true;
         },
         error: (error) => {
           console.error(error);
         },
       });
-
-    // Carregar os programas de TV da primeira página ao iniciar o componente
     this.pageChangedSubject.next(1);
   }
 }

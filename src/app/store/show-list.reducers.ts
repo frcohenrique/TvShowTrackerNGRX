@@ -8,8 +8,16 @@ export const initialState: IShowListState = {
 
 export const showListReducer = createReducer(
   initialState,
-  on(ShowActions.addTvShow, (state, { show }) => ({
-    ...state,
-    shows: [...state.shows, show],
-  }))
+  on(ShowActions.addTvShow, (state, { show }) => {
+    const showExists = state.shows.some(
+      (existingShow) => existingShow.id === show.id
+    );
+    if (!showExists) {
+      return {
+        ...state,
+        shows: [...state.shows, show],
+      };
+    }
+    return state;
+  })
 );
